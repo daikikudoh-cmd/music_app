@@ -4,92 +4,156 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- ajax -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Laravel</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+        <!-- ongaq js -->
+        <script src="https://cdn.jsdelivr.net/gh/codeninth/ongaq-js/build/ongaq.js"></script>
+        <!-- jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 
         <!-- Styles -->
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+        html {
+            height: 100%;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            /*background: #f9f8e9;*/
+            background-image: url("./wall.png");
+        }
+        main {
+            /*position: absolute;*/
+            /*top: 200px;*/
+            /*left: 50%;*/
+            /*transform: translateX(-50%) translateY(-50%);*/
+            width: 400px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            flex-flow: column;
+            align-items: center;
+            background-color: rgba(255,255,255,.9);
+            border-radius: 3px;
+            box-shadow: 0 1px 10px rgba(0,0,0,.2);
+            text-align:center;
+            margin:0 auto;
+        }
+        h1 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #31494e;
+            margin-top: 0;
+        }
+        ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        li .button {
+            display: block;
+            text-decoration: none;
+            color: #33634f;
+            background-color: #aeefc4;
+            cursor: pointer;
+            transition: all .1s ease;
+            padding: 10px 20px;
+            font-size: 20px;
+            border-radius: 4px;
+        }
+        li .button:not(.start):not(.pause) {
+            background-color: #eee;
+            cursor: default;
+            transition: none;
+        }
+        .button:before {
+            display: inline;
+            text-transform: capitalize;
+        }
+        .button.start:before {
+            content: "start"
+        }
+        .button.pause:before {
+            content: "pause"
+        }
+        .button:not(.start):not(.pause):before {
+            content: "...loading"
+        }
+        .button.start:hover,
+        .button.pause:hover {
+            opacity: 0.7;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            font-size: 14px;
+            background: rgba(255,255,255,.9);
+            padding-top: 10px;
+        }
+        footer a {
+            color: #22b4d6;
+        }
+        p {
+            margin: 0;
+        }
 
-            .full-height {
-                height: 100vh;
-            }
+        .cssadd{
+          color:red;
+        }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
 
-            .position-ref {
-                position: relative;
-            }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
 
-            .content {
-                text-align: center;
-            }
 
-            .title {
-                font-size: 84px;
-            }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
+
+          <main>
+              <h1>CHeck the Music !</h1>
+              <ul>
+                  <li><a id="button" class="button" href="javascript:;"></a></li>
+              </ul>
+          </main>
+
+
+
+          <input type="text" name="selected_bpm" class="selected_bpm" value="90">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <script src="js/index.js"></script>
     </body>
 </html>
