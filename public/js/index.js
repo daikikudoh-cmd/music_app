@@ -1,5 +1,24 @@
 $(function(){
 
+	$('.selected_bpm').change(function() {
+			$.ajax({
+					headers: {
+							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+					},
+					url: './set',
+					type: 'POST',
+					data: {"bpm" : '80'},
+			})
+			// Ajaxリクエストが成功した場合
+			.done(function() {
+					alert("いけた")
+			})
+			// Ajaxリクエストが失敗した場合
+			.fail(function(error) {
+					alert('error');
+			});
+	});
+
 	/*******************************
 	*ongaq マスター
 	*
@@ -53,8 +72,11 @@ $my_drums.add(new Filter ({
 	active: beat => beat ===8
 }))
 
-
 $ongaq.add($my_drums)
+
+
+
+
 
 
 });
