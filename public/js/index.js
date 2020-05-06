@@ -1,17 +1,19 @@
 $(function(){
 
 	$('.selected_bpm').change(function() {
+		var $bpm=$('.selected_bpm').val();
 			$.ajax({
 					headers: {
 							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 					},
 					url: './set',
 					type: 'POST',
-					data: {"bpm" : '80'},
+					data: JSON.stringify($bpm),
+					dataType:"json"
 			})
 			// Ajaxリクエストが成功した場合
 			.done(function() {
-					alert("いけた")
+					alert($bpm);
 			})
 			// Ajaxリクエストが失敗した場合
 			.fail(function(error) {
@@ -24,7 +26,7 @@ $(function(){
 	*
 	********************************/
 
-$bpm = $('.selected_bpm').val();
+// $bpm = $('.selected_bpm').val();
 
 const $ongaq=new Ongaq({
 	api_key: "b2f52d085245478087c08fa83c45f0ee",
@@ -74,12 +76,13 @@ $my_drums.add(new Filter ({
 
 $ongaq.add($my_drums)
 
-
-
-
-
-
 });
+
+
+
+
+
+
 // const ongaq = new Ongaq ({
 // 	api_key: "b2f52d085245478087c08fa83c45f0ee",
 // 	volume: 100,

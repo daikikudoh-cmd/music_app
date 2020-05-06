@@ -137,7 +137,7 @@
 
 
 
-          BPM : <input type="text" name="bpm" class="selected_bpm" value="90">
+          BPM : <input type="text" name="bpm" class="selected_bpm">
 
 
 

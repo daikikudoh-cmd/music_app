@@ -9,6 +9,7 @@ class InstrumentsController extends Controller
 
 	public function set (Request $request)
 	{
-			$bpm = $request->bpm;
+			$bpm = $request->input('bpm');
+			return response()->json(['bpm' => $bpm]);
 	}
 }
